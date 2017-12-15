@@ -13,10 +13,10 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding Selection}">
+        <ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding Selection}" BorderThickness="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="5" >
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="4" Width="120">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="{Binding Image}" Margin="2" Width="50" Height="50"/>
                             <Label Content="{Binding Description}" VerticalAlignment="Center" Margin="2"/>

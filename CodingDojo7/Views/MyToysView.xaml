@@ -8,7 +8,7 @@
              DataContext="{Binding Source={StaticResource Locator}, Path=MyToys}"
              d:DesignHeight="300" d:DesignWidth="660">
     <Grid>
-        <ItemsControl ItemsSource="{Binding Wishlist}">
+        <ItemsControl ItemsSource="{Binding Cart}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"/>

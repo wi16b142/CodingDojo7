@@ -37,8 +37,9 @@ namespace CodingDojo7.ViewModel
         {
 
 
-            Items = new ObservableCollection<ItemsVM>();          
+            Items = new ObservableCollection<ItemsVM>();
             DummyData();
+            Selection = Items[0];
 
             BuyBtnClicked = new RelayCommand<ItemsVM>((itemToAdd) =>
             {

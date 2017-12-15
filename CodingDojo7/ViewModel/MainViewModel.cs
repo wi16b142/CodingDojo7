@@ -14,19 +14,18 @@ namespace CodingDojo7.ViewModel
             get { return currentView; ; }
             set { currentView = value; RaisePropertyChanged(); }
         }
-
         public MainViewModel()
         {
             CurrentView = SimpleIoc.Default.GetInstance<OverviewVM>();
             OverviewBtnClickCmd = new RelayCommand(()=> 
             {
-                CurrentView = CurrentView = SimpleIoc.Default.GetInstance<OverviewVM>();
+                CurrentView = SimpleIoc.Default.GetInstance<OverviewVM>();
                 RaisePropertyChanged();
             });
 
             MyToysBtnClickCmd = new RelayCommand(() =>
             {
-                CurrentView = CurrentView = SimpleIoc.Default.GetInstance<MyToysVM>();
+                CurrentView = SimpleIoc.Default.GetInstance<MyToysVM>();
                 RaisePropertyChanged();
             });
 

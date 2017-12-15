@@ -44,9 +44,11 @@ namespace CodingDojo7.ViewModel
             ////}
 
             SimpleIoc.Default.Register<MainViewModel>();
-            SimpleIoc.Default.Register<OverviewVM>();
-            SimpleIoc.Default.Register<MyToysVM>();
             SimpleIoc.Default.Register<Messenger>();
+            SimpleIoc.Default.Register<OverviewVM>(true);
+            SimpleIoc.Default.Register<MyToysVM>(true);
+            SimpleIoc.Default.Register<MessageVM>();
+            
         }
 
         public MainViewModel Main
@@ -70,6 +72,14 @@ namespace CodingDojo7.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<MyToysVM>();
+            }
+        }
+
+        public MessageVM Message
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<MessageVM>();
             }
         }
 
