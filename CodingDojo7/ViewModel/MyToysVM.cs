@@ -4,29 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
+using GalaSoft.MvvmLight.Ioc;
 using System.Collections.ObjectModel;
 
 namespace CodingDojo7.ViewModel
 {
     public class MyToysVM:ViewModelBase
     {
-        private ObservableCollection<ItemsVM> wishlist;
+        private ObservableCollection<ItemsVM> cart;
+        Messenger messenger = SimpleIoc.Default.GetInstance<Messenger>();
         
-        public ObservableCollection<ItemsVM> Wishlist
+        public ObservableCollection<ItemsVM> Cart
         {
-            get { return wishlist; }
-            set { wishlist = value; RaisePropertyChanged(); }
+            get { return cart; }
+            set { cart = value; RaisePropertyChanged(); }
         }
 
         public MyToysVM()
         {
-            Wishlist = new ObservableCollection<ItemsVM>();
+            Cart = new ObservableCollection<ItemsVM>();
+            messenger.Register<PropertyChangedMessage<ItemsVM>>(this, update);
         }
 
-        internal void Add(ItemsVM itemToAdd)
+        void update(PropertyChangedMessage<ItemsVM> toAdd)
         {
-            Wishlist.Add(itemToAdd);
-            RaisePropertyChanged();
+            Cart.Add(toAdd.NewValue);
         }
     }
 }

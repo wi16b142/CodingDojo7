@@ -1,5 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,41 +15,34 @@ namespace CodingDojo7.ViewModel
     public class OverviewVM : ViewModelBase
     {
         private ObservableCollection<ItemsVM> items;
-        public MyToysVM Cart { get; set; }
         private ItemsVM selection;
         private RelayCommand<ItemsVM> buyBtnClicked;
-
+        Messenger messenger = SimpleIoc.Default.GetInstance<Messenger>();
         public RelayCommand<ItemsVM> BuyBtnClicked
         {
             get { return buyBtnClicked; }
             set { buyBtnClicked = value; RaisePropertyChanged(); }
         }
-
         public ItemsVM Selection
         {
             get { return selection; }
             set { selection = value; RaisePropertyChanged(); }
         }
-
         public ObservableCollection<ItemsVM> Items
         {
             get { return items; }
             set { items = value; RaisePropertyChanged(); }
         }
-
         public OverviewVM()
         {
 
 
-            Items = new ObservableCollection<ItemsVM>();
-            Cart = new MyToysVM();
-            
+            Items = new ObservableCollection<ItemsVM>();          
             DummyData();
 
             BuyBtnClicked = new RelayCommand<ItemsVM>((itemToAdd) =>
             {
-                Cart.Add(itemToAdd);
-                RaisePropertyChanged();
+                messenger.Send<PropertyChangedMessage<ItemsVM>>(new PropertyChangedMessage<ItemsVM>(null, itemToAdd, ""));
             });
         }
 
