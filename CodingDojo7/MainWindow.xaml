@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CodingDojo7"
         mc:Ignorable="d"
-        Title="CodingDojo7 by Sascha Böck" Height="350" Width="525">
+        Title="CodingDojo7 by Sascha Böck" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="130"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="310"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <Button Margin="10">Overview</Button>
+            <Button Margin="10">My Toys</Button>
+        </StackPanel>
+
         
+
     </Grid>
 </Window>
