@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CodingDojo7"
+        xmlns:local="clr-namespace:CodingDojo7.Views"
+        xmlns:vm="clr-namespace:CodingDojo7.ViewModel"
+        xmlns:views="clr-namespace:CodingDojo7.Views"
         mc:Ignorable="d"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
         Title="CodingDojo7 by Sascha Böck" Height="450" Width="800">
@@ -19,10 +21,20 @@
         </Grid.RowDefinitions>
 
         <StackPanel>
-            <Button Margin="10">Overview</Button>
-            <Button Margin="10">My Toys</Button>
+            <Button Margin="10" Content="Overview" Command="{Binding OverviewBtnClickCmd}"/>
+            <Button Margin="10" Content="My Toys" Command="{Binding MyToysBtnClickCmd}"/>
         </StackPanel>
 
+        <ContentControl Grid.Column="1" Grid.Row="0" Content="{Binding CurrentView}" Margin="10" BorderThickness="1" BorderBrush="Black">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type vm:OverviewVM}">
+                    <views:Overview/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:MyToysVM}">
+                    <views:MyToysView/>
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
         
 
     </Grid>

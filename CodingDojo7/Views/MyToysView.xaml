@@ -5,8 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CodingDojo7.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             DataContext="{Binding Source={StaticResource Locator}, Path=MyToys}"
+             d:DesignHeight="300" d:DesignWidth="660">
     <Grid>
-            
+        <ItemsControl ItemsSource="{Binding Wishlist}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="5" Width="70" Height="70">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding Image}"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
     </Grid>
 </UserControl>

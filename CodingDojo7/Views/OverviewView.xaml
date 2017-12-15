@@ -5,8 +5,54 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CodingDojo7.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             DataContext="{Binding Source={StaticResource Locator}, Path=Overview}"
+             d:DesignHeight="300" d:DesignWidth="660">
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="145"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding Selection}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="4" Width="120">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding Image}" Margin="2" Width="50" Height="50"/>
+                            <Label Content="{Binding Description}" VerticalAlignment="Center" Margin="2"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+
+        <ItemsControl Grid.Column="1" ItemsSource="{Binding Selection.Items}" Margin="5">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="4" Margin="4" Width="200">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding Image}" Height="50" Width="50" Margin="1,0"/>
+                                    <Label Content="{Binding Description}" Width="120" VerticalAlignment="Center" Margin="1,0"/>
+                                    <Label Content="{Binding AgeRecc}" Width="30" VerticalAlignment="Center" Margin="1,0"/>
+                                </StackPanel>
+                                <Button Content="Buy" 
+                                        Command="{Binding DataContext.BuyBtnClicked, RelativeSource={RelativeSource AncestorType=ItemsControl}}" 
+                                        CommandParameter="{Binding}"
+                                        Width="40" HorizontalAlignment="Center" Margin="2"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
     </Grid>
 </UserControl>
