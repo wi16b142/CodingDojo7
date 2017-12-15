@@ -10,7 +10,5 @@ namespace CodingDojo7.ViewModel
     public class MyToysVM:ViewModelBase
     {
 
-
-
     }
 }
