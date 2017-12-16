@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CodingDojo7.ViewModel
+namespace CodingDojo7.Views
 {
     /// <summary>
     /// Interaction logic for MessageView.xaml

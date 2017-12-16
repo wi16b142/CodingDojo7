@@ -47,7 +47,7 @@ namespace CodingDojo7.ViewModel
             SimpleIoc.Default.Register<Messenger>();
             SimpleIoc.Default.Register<OverviewVM>(true);
             SimpleIoc.Default.Register<MyToysVM>(true);
-            SimpleIoc.Default.Register<MessageVM>();
+            SimpleIoc.Default.Register<MessageVM>(true);
             
         }
 

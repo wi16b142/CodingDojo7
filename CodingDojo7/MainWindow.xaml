@@ -37,11 +37,7 @@
         </ContentControl>
 
         <ContentControl Grid.Row="1" Grid.ColumnSpan="2">
-            <ContentControl.Resources>
-                <DataTemplate DataType="{x:Type vm:MyToysVM}">
-                    <views:MyToysView/>
-                </DataTemplate>
-            </ContentControl.Resources>
+            <views:MessageView/>
         </ContentControl>
 
     </Grid>
